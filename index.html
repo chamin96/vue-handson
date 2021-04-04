@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+
+<body>
+    <h1>Hello Vue!</h1>
+
+    <div id="app">
+        <p>{{ title }} - {{ rating }}</p>
+        <p v-show="showDetails">{{ details }}</p>
+        <button @click="rating++" v-if="rating<5">Rate</button>
+        <button @click="rating--" v-if="rating>0">Under Rate</button>
+        <button @click="handleNext">Next</button>
+        <button @click="handleShowDetails" v-if="!showDetails">Show Details</button>
+        <button @click="handleShowDetails" v-else>Hide Details</button>
+        <div v-if="rating>3">
+            <h6>Great!</h6>
+        </div>
+        <div v-else>
+            <h6>Not so good</h6>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
