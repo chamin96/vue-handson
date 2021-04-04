@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOOK WORLD</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+      body {
+        background: #eee;
+        max-width: 960px;
+        margin: 20px auto;
+      }
+      img {
+        height: 100px;
+      }
+      li {
+        list-style-type: none;
+        background: #fff;
+        margin: 20px auto;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      li.fav {
+        background: #ffe7fa
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Best Selling Books</h1>
+
+    <div id="app">
+      <ul>
+        <li v-for="book in books" :class="{ fav: book.fav }">
+          <img :src="book.cover" :alt="book.name" />
+          <b>{{ book.name }}</b> <i>by</i> {{ book.author }}
+          <small><i>({{ book.copies }} sold)</i></small>
+          <button @click="handleFav(book)" v-if="!book.fav">Add to Favourites</button>
+          <button @click="handleFav(book)" v-else>Remove from Favourites</button>
+        </li>
+      </ul>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
