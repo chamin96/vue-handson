@@ -43,6 +43,15 @@
           <button @click="handleFav(book)" v-else>Remove from Favourites</button>
         </li>
       </ul>
+      <h3>Favourites</h3>
+      <ul>
+        <li v-for="book in filteredBooks" :class="{ fav: book.fav }">
+          <img :src="book.cover" :alt="book.name" />
+          <b>{{ book.name }}</b> <i>by</i> {{ book.author }}
+          <small><i>({{ book.copies }} sold)</i></small>
+          <button @click="handleFav(book)" v-if="book.fav">Remove from Favourites</button>
+        </li>
+      </ul>
     </div>
 
     <script src="app.js"></script>
