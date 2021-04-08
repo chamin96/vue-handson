@@ -22,7 +22,7 @@ export default {
     },
     stopTimer() {
       clearInterval(this.timer);
-      console.log(this.reactionTime);
+      this.$emit("end", this.reactionTime);
     },
   },
   mounted() {
@@ -41,11 +41,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+h3 {
+  size: 24px;
+}
 .block {
   width: 300px;
   border-radius: 20px;
-  background: #0faf87;
+  background: #03ad83;
   color: white;
   text-align: center;
   padding: 50px 0;
