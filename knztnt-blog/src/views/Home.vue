@@ -1,18 +1,28 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>My name is {{ name }} and I am {{ age }}</p>
+    <h1>knztnt Blog</h1>
+    <div v-if="error">{{ error }}</div>
+    <div v-if="posts.length">
+      <PostList :posts="posts" />
+    </div>
+    <div v-else>Loading...</div>
   </div>
 </template>
 
 <script>
+import PostList from "../components/PostList";
+
+import getPosts from "../composables/getPosts";
+
 export default {
   name: "Home",
+  components: { PostList },
   setup() {
-    let name = "Chamin";
-    let age = 25;
+    const { posts, error, load } = getPosts();
 
-    return { name, age };
+    load();
+
+    return { posts, error };
   },
 };
 </script>
